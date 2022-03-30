@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot Thymeleaf Application - Form Samples - Inputs</title>
+</head>
+<body>
+
+<h2 th:if = '${submitStatus == true}'>Insert Success!</h2>
+
+<form th:action="@{/employee/proses}" th:object="${employee}" method="post">
+
+    <div>
+        <label>name:</label>
+        <input type="text" th:field="*{name}" placeholder="enter your name" />
+    </div>
+    <div>
+        <label>address:</label>
+        <input type="text" th:field="*{address}" placeholder="enter your address" />
+    </div>
+     <div>
+        <label>description:</label>
+        <input type="text" th:field="*{jobDesc}" placeholder="enter your job description" />
+    </div>
+    <input type="submit" value="Submit"/>
+</form>
+<div>
+	<h2>View Data Employee</h2>
+	<table border=1>
+		<tr>
+			<th>Name</th>
+			<th>Address</th>
+			<th>Job Description</th>		
+		</tr>
+	   <th:block th:each="emp : ${employees}">
+	      <tr>
+	         <td th:text="${emp.name}"></td>
+	         <td th:text="${emp.address}"></td>
+	         <td th:text="${emp.jobDesc}"></td>
+	      </tr>
+	   </th:block>
+	</table>
+</div>
+
+
+</body> 
+</html>
